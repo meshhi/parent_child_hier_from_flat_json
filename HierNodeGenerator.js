@@ -5,20 +5,20 @@ export class HierNodeGenerator {
 
     constructor(data, rootNode) {
         this.rootNode = rootNode;
-        this.addHiearchyContainer(this.rootNode);
+        this.addHierarchyContainer(this.rootNode);
         this.generateHierarchyStructure(this.hierarchyContainer, data);
         this.closeAllNodes();
         this.nodeHandlers.push(this.nodeOpenHandler);
         this.registerNodeListeners();
     }
 
-    addHiearchyContainer(node) {
+    addHierarchyContainer(node) {
         this.hierarchyContainer = document.createElement("div");
         this.hierarchyContainer.classList.add("hierarchy-container");
         node.appendChild(this.hierarchyContainer);
     }
 
-    createHiearchyElement(item) {
+    createHierarchyElement(item) {
         const hierarchyElement = document.createElement("div");
         hierarchyElement.classList.add("hierarchy-element");
         hierarchyElement.id = item.id;
@@ -29,7 +29,7 @@ export class HierNodeGenerator {
 
     generateHierarchyStructure(node, tree) {
         tree.forEach(item => {
-            const hierarchyElement = this.createHiearchyElement(item);
+            const hierarchyElement = this.createHierarchyElement(item);
             node.appendChild(hierarchyElement);
             if (item.children.length) {
                 this.generateHierarchyStructure(hierarchyElement, item.children)
